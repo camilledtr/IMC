@@ -30,22 +30,28 @@ function calculateIMC() {
   const height = inputs[0].value;
   const weight = inputs[1].value;
 
+  const result = document.querySelector(".result");
+  const comment = document.querySelector(".comment");
 
-  if (!height) {
+
+  if (!height || !weight) {
     console.log('Error');
+    result.textContent = 0;
+    comment.textContent = "Veuillez rentrer toutes les données"
     return;
   }
 
-  var denom = Math.pow(height/100, 2);
-  return Math.round(weight*10/denom)/10;
-}
+  var denom = Math.pow(height / 100, 2);
+  res = Math.round(weight * 10 / denom) / 10;
 
-const result = document.querySelector(".result");
-const comment = document.querySelector(".comment");
 
-if (calculateIMC()) {
-  result.textContent = calculateIMC();
-  if (result >= 18.5 && result <= 25) {
-    comment.textContent = "Vous êtes en bonne santé !";
+
+  if (height && weight) {
+    result.textContent = res;
+    if (res >= 18.5 && res <= 25) {
+      comment.textContent = "Vous êtes en bonne santé !";
+    }
   }
 }
+
+
