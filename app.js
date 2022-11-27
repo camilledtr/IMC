@@ -45,5 +45,7 @@ const comment = document.querySelector(".comment");
 
 if (calculateIMC()) {
   result.textContent = calculateIMC();
-  comment.textContent = "Vous êtes en bonne santé !";
+  if (result >= 18.5 && result <= 25) {
+    comment.textContent = "Vous êtes en bonne santé !";
+  }
 }
